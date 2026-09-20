@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Simulation output (generated artifacts, not source)
+out/
+*.npy
+*.log
+
+# OS / editor
+.DS_Store
+*.swp
+*.bak
