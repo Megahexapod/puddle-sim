@@ -44,10 +44,13 @@ def test_any_factor_zero_kills_the_score():
 def test_all_factors_equal_returns_that_value():
     # Property: 每個 factor 都等於 c（不管權重多少）-> 結果就是 c。
     # 提示：c=0.5，放兩個不同權重的 factor（例如權重 2 和權重 5），結果仍該是 0.5。
-    raise NotImplementedError("刪掉這行，寫你的 _geo(...) + assert")
-
+    out = _geo([(arr(0.5), 2.0), (arr(0.5), 5.0)])
+    assert out[0] == approx(0.5)
 
 def test_factors_are_clipped_to_0_1():
     # Property: factor 超過 1 當作 1、小於 0 當作 0（_geo 內部有 np.clip）。
     # 提示：_geo([(arr(5.0), 1.0)])[0] 該是 1.0；arr(-3.0) 那個該是 0.0。兩個 assert。
-    raise NotImplementedError("刪掉這行，寫你的兩個 assert")
+    out_high = _geo([(arr(5.0), 1.0)])
+    assert out_high[0] == approx(1.0)
+    out_low = _geo([(arr(-3.0), 1.0)])
+    assert out_low[0] == approx(0.0)
