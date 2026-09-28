@@ -167,7 +167,6 @@ class Hydro:
         transported as pollution = 1 - quality, not as quality itself.
         edge_conc: concentration of the substance in the sea water that came in over the east edge.
         """
-        cfg = self.cfg
         d0, d1 = self.d_prev, self.d
         QL, QR, QT, QB = self.QL, self.QR, self.QT, self.QB
         out = QL + QR + QT + QB

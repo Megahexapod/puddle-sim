@@ -12,7 +12,7 @@ from .config import Config
 from .creatures import SPECIES, Creature, Species, spawn, species_score
 from .world import count3x3
 from .farmer import Farmer
-from .industry import TABLE as IND_TABLE, Industries
+from .industry import Industries
 from .sites import pick, score
 from .world import World
 
@@ -234,14 +234,12 @@ class Simulation:
         # D-032 tier 2: the pen. Fed from the ledger (wood -> litter), dung fouls the water, the
         # stock inside is collected every round; the animals are harvested when they are grown.
         if self.pen_mask.any():
-            fed = 0.0
             if self.farmer.ledger.get("wood", 0.0) > 0.0:
                 cells = int(self.pen_mask.sum())
                 cost = cfg.pen_feed * cells * 0.05
                 if self.farmer.ledger["wood"] >= cost:
                     self.farmer.ledger["wood"] -= cost
                     w.detritus[self.pen_mask] = np.minimum(3.0, w.detritus[self.pen_mask] + cfg.pen_feed)
-                    fed = cfg.pen_feed
             inside = [c for sp in self.species for c in self.pops[sp.key] if c.pen and c.alive]
             for c in inside:
                 w.quality[c.pos] = max(0.0, w.quality[c.pos] - cfg.pen_waste)

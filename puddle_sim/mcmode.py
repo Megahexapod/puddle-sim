@@ -29,7 +29,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from .gen import MUD, ROCK, SALT, SAND, SOIL
+from .gen import MUD, ROCK, SAND
 from .ground import Ground
 from .world import chebyshev_distance_to
 
@@ -158,9 +158,8 @@ class GroundMC(Ground):
         self.was_spring = spring
 
         # --- random-ticked transitions ---
-        land = ~water
         rnd = rng.random((H, W))
-        # tread relaxes; rain leaches salt; hard bare ground erodes
+        # tread relaxes; rain leaches salt
         relax = mask & (self.tread_count > 0) & (rnd < cfg.pack_relax * 3 * cfg.pack_per_level * self.scale * (1.0 + world.soil.r))
         self.tread_count[relax] -= 1
         leach = mask & self.saline_bit & (self.rain_class >= 2) & (rnd < cfg.mc_leach_p)

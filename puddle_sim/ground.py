@@ -24,7 +24,6 @@ from __future__ import annotations
 import numpy as np
 
 from .config import Config
-from .gen import MUD, ROCK, SALT, SAND, SOIL
 
 
 def _shift(a: np.ndarray, dy: int, dx: int, mode: str = "edge") -> np.ndarray:

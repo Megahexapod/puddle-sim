@@ -11,7 +11,7 @@ import numpy as np
 from .climate import Climate
 from .config import Config
 from .crops import CALTROP, DRY, NONE, RICE, TABLE as CROPS, choose as choose_crop, fitness as crop_fitness
-from .flora import BARE, GRASS, MANGROVE, SWAMP, TREE, TREES, VETIVER, XERO, Flora
+from .flora import BARE, MANGROVE, TREE, TREES, VETIVER, Flora
 from .gen import MUD, ROCK, SALT, SAND, build as build_skeleton, check as check_skeleton, smooth_noise  # noqa: F401
 from .ground import Ground
 from .hydro import Hydro
@@ -516,7 +516,6 @@ class World:
     def till(self, y: int, x: int, crop: int = None) -> None:
         """Farmer makes a field here (a paddy, a dry field, or a caltrop pond) and clears the canopy
         around it for light."""
-        cfg = self.cfg
         if self.substrate[y, x] == ROCK:
             return
         self.farm[y, x] = True
