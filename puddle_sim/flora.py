@@ -216,7 +216,6 @@ class Flora:
             rnd = np.where(mask, rnd / scale, 2.0)      # rnd < p*scale  <=>  rnd/scale < p; unsampled never roll
         self.dead_wood[:] = 0.0
 
-        empty = self.kind == BARE
         # Process kinds in priority order: canopy species claim cells over ground cover.
         order = [TREE, CHESTNUT, PERSIMMON, SWAMP, XERO, MANGROVE, MARSH, SEAGRASS, MUSSEL, ALGAE, DUNE, VETIVER, FERN, GRASS]
         new_kind = self.kind.copy()
@@ -297,7 +296,6 @@ class Flora:
 
     def seed(self, world, ticks: int) -> None:
         """Generation: scatter a few of every kind where they fit, then run the rules to quiet."""
-        cfg = self.cfg
         gy, gx = np.gradient(world.hydro.b)
         slope = np.sqrt(gy ** 2 + gx ** 2)
         soil_sal = world.soil_salinity()

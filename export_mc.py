@@ -14,8 +14,6 @@ import argparse
 import json
 import os
 
-import numpy as np
-
 from levels import LEVELS
 from puddle_sim.config import Config
 from puddle_sim.flora import (ALGAE, BARE, CHESTNUT, DUNE, FERN, GRASS, MANGROVE, MARSH, MUSSEL,

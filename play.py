@@ -21,7 +21,7 @@ from flask import Flask, jsonify, request, Response
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from puddle_sim.config import Config  # noqa: E402
-from puddle_sim.flora import BARE, TREE  # noqa: E402
+from puddle_sim.flora import BARE  # noqa: E402
 from puddle_sim.sim import Simulation  # noqa: E402
 
 app = Flask(__name__)

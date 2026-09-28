@@ -16,7 +16,7 @@ from typing import Callable, Dict, List, Tuple
 import numpy as np
 
 from .config import Config
-from .flora import BARE, SWAMP, TREE, TREES
+from .flora import BARE, TREES
 from .gen import ROCK
 
 SALTPAN, KILN, WHEEL = 1, 2, 3
